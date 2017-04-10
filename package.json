@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "dependencies": {
+    "browser-sync": "^2.27.9"
+  },
+  "scripts": {
+    "start": "browser-sync --no-notify --no-ghost-mode --no-ui --watch 'index.html,style.css,script.js'"
+  }
+}

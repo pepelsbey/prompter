@@ -27,7 +27,7 @@
         }
     }
 
-    function start() {
+    function rewind() {
         window.scrollTo(0, document.body.clientHeight - window.innerHeight);
     }
 
@@ -109,7 +109,7 @@
         }
     });
 
-    document.addEventListener('click', toggle);
     document.addEventListener('touchstart', toggle);
+    window.addEventListener('load', rewind);
 
 }());

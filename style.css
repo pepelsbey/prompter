@@ -30,6 +30,7 @@
 	padding: 100vh 0.2rem calc(50vh - 0.6rem);
 	-webkit-hyphens: auto;
 	hyphens: auto;
+    transform: scaleY(-1);
 	}
 
 /* Paragraphs */

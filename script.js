@@ -7,8 +7,8 @@
 	var scrollStep = 3;
 
 	function scroll() {
-		if (!bottom()) {
-			window.scrollBy(0, scrollStep);
+		if (window.scrollY) {
+			window.scrollBy(0, -scrollStep);
 			animationLoop = window.requestAnimationFrame(scroll);
 			scrollingNow = true;
 		}
@@ -27,6 +27,10 @@
 		}
 	}
 
+	function start() {
+		window.scrollTo(0, document.body.clientHeight - window.innerHeight);
+	}
+
 	function resize(factor) {
 		prompt.style.setProperty(
 			'--size',
@@ -34,10 +38,6 @@
 				prompt.style.getPropertyValue('--size')
 			) + factor
 		);
-	}
-
-	function bottom() {
-		return document.body.clientHeight == window.innerHeight + window.scrollY;
 	}
 
 	document.addEventListener('keydown', function(event) {

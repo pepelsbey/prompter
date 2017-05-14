@@ -40,6 +40,41 @@
         );
     }
 
+    function fullscreen(element) {
+        if (
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement
+        ) {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+            if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+            if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            }
+            if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        } else {
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            }
+            if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+            }
+            if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            }
+            if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+        }
+    }
+
     document.addEventListener('keydown', function(event) {
         if (event.metaKey || event.ctrlKey) {
             switch (event.key) {
@@ -65,6 +100,10 @@
                 break;
                 case '=':
                     scrollStep++;
+                break;
+                case 'f':
+                    event.preventDefault();
+                    fullscreen(prompt);
                 break;
             }
         }

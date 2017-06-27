@@ -105,6 +105,16 @@
                     event.preventDefault();
                     fullscreen(prompt);
                 break;
+                case 'ArrowLeft':
+                case 'UIKeyInputLeftArrow':
+                    event.preventDefault();
+                    rewind();
+                break;
+                case 'ArrowRight':
+                case 'UIKeyInputRightArrow':
+                    event.preventDefault();
+                    toggle();
+                break;
             }
         }
     });

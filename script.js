@@ -4,7 +4,7 @@
 
     var animationLoop;
     var scrollingNow = false;
-    var scrollStep = 3;
+    var scrollStep = 2;
 
     function scroll() {
         if (window.scrollY) {
@@ -80,11 +80,11 @@
             switch (event.key) {
                 case '-':
                     event.preventDefault();
-                    resize(-1);
+                    resize(-0.1);
                 break;
                 case '=':
                     event.preventDefault();
-                    resize(+1);
+                    resize(+0.1);
                 break;
             }
         } else {

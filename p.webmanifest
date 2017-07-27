@@ -1,0 +1,19 @@
+{
+	"name": "Prompter",
+	"display": "fullscreen",
+	"icons": [
+		{
+			"src": "images/icon.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "images/icon.svg",
+			"sizes": "any",
+			"type": "image/svg"
+		}
+	],
+	"start_url": ".",
+	"theme_color": "#666666",
+	"background_color": "#000000"
+}

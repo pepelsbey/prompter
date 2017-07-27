@@ -3,19 +3,33 @@
     var prompt = document.querySelector('.prompt');
 
     var animationLoop;
+
     var scrollingNow = false;
     var scrollStep = 2;
 
+    var defaultSpeed = 30;
+    var minimumSpeed = 10;
+    var maximumSpeed = 60;
+    var stepSpeed = 10;
+
+	function renderRequest() {
+		window.requestAnimationFrame(render);
+	}
+
+	function render() {
+		window.scrollBy(0, -scrollStep);
+		scrollingNow = true;
+		scroll();
+	}
+
     function scroll() {
         if (window.scrollY) {
-            window.scrollBy(0, -scrollStep);
-            animationLoop = window.requestAnimationFrame(scroll);
-            scrollingNow = true;
+            animationLoop = setTimeout(renderRequest, 1000 / defaultSpeed);
         }
     }
 
     function pause() {
-        window.cancelAnimationFrame(animationLoop);
+        window.clearTimeout(animationLoop);
         scrollingNow = false;
     }
 
@@ -90,30 +104,31 @@
         } else {
             switch (event.key) {
                 case ' ':
+                case 'ArrowRight':
+                case 'UIKeyInputRightArrow':
                     event.preventDefault();
                     toggle();
-                break;
-                case '-':
-                    if (scrollStep > 1) {
-                        scrollStep--;
-                    }
-                break;
-                case '=':
-                    scrollStep++;
-                break;
-                case 'f':
-                    event.preventDefault();
-                    fullscreen(prompt);
                 break;
                 case 'ArrowLeft':
                 case 'UIKeyInputLeftArrow':
                     event.preventDefault();
                     rewind();
                 break;
-                case 'ArrowRight':
-                case 'UIKeyInputRightArrow':
+                case '-':
+                    if (defaultSpeed > minimumSpeed) {
+                        defaultSpeed -= stepSpeed;
+                        console.log(defaultSpeed);
+                    }
+                break;
+                case '=':
+                    if (defaultSpeed < maximumSpeed) {
+                        defaultSpeed += stepSpeed;
+                        console.log(defaultSpeed);
+                    }
+                break;
+                case 'f':
                     event.preventDefault();
-                    toggle();
+                    fullscreen(prompt);
                 break;
             }
         }

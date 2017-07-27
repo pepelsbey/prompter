@@ -3,10 +3,9 @@
     var prompt = document.querySelector('.prompt');
 
     var animationLoop;
-
     var scrollingNow = false;
-    var scrollStep = 2;
 
+    var scrollStep = 2;
     var defaultSpeed = 30;
     var minimumSpeed = 10;
     var maximumSpeed = 60;

@@ -112,6 +112,7 @@
                 case 'ArrowLeft':
                 case 'UIKeyInputLeftArrow':
                     event.preventDefault();
+                    pause();
                     rewind();
                 break;
                 case '-':
@@ -135,6 +136,5 @@
     });
 
     document.addEventListener('touchstart', toggle);
-    window.addEventListener('load', rewind);
 
 }());

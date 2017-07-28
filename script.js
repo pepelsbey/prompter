@@ -1,5 +1,21 @@
 (function() {
 
+    var fullScreenElement = document.fullScreenElement ||
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement;
+
+    var exitFullscreenFn = document.exitFullscreen ||
+        document.webkitExitFullscreen ||
+        document.mozCancelFullscreen ||
+        document.msExitFullscreen;
+
+    var requestFullscreenFn = Element.prototype.requestFullscreen ||
+        Element.prototype.webkitRequestFullscreen ||
+        Element.prototype.mozRequestFullScreen ||
+        Element.prototype.msRequestFullscreen;
+
+
     var prompt = document.querySelector('.prompt');
 
     var animationLoop;
@@ -11,15 +27,15 @@
     var maximumSpeed = 60;
     var stepSpeed = 10;
 
-	function renderRequest() {
-		window.requestAnimationFrame(render);
-	}
+    function renderRequest() {
+        window.requestAnimationFrame(render);
+    }
 
-	function render() {
-		window.scrollBy(0, -scrollStep);
-		scrollingNow = true;
-		scroll();
-	}
+    function render() {
+        window.scrollBy(0, -scrollStep);
+        scrollingNow = true;
+        scroll();
+    }
 
     function scroll() {
         if (window.scrollY) {
@@ -54,37 +70,10 @@
     }
 
     function fullscreen(element) {
-        if (
-            document.fullscreenElement ||
-            document.webkitFullscreenElement ||
-            document.mozFullScreenElement ||
-            document.msFullscreenElement
-        ) {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            }
-            if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            }
-            if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            }
-            if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
+        if (fullscreenElement) {
+          exitFullscreenFn();
         } else {
-            if (element.requestFullscreen) {
-                element.requestFullscreen();
-            }
-            if (element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen();
-            }
-            if (element.mozRequestFullScreen) {
-                element.mozRequestFullScreen();
-            }
-            if (element.msRequestFullscreen) {
-                element.msRequestFullscreen();
-            }
+          requestFullscreenFn.call(element);
         }
     }
 

@@ -70,7 +70,7 @@
     }
 
     function fullscreen(element) {
-        if (fullscreenElement) {
+        if (fullScreenElement) {
           exitFullscreenFn();
         } else {
           requestFullscreenFn.call(element);

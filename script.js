@@ -21,7 +21,7 @@
     var animationLoop;
     var scrollingNow = false;
 
-    var scrollStep = 2;
+    var scrollStep = 3;
     var defaultSpeed = 30;
     var minimumSpeed = 10;
     var maximumSpeed = 60;

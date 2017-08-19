@@ -33,12 +33,11 @@
 
     function render() {
         window.scrollBy(0, -scrollStep);
-        scrollingNow = true;
         scroll();
     }
 
     function scroll() {
-        if (window.scrollY) {
+        if (window.scrollY && scrollingNow) {
             animationLoop = setTimeout(renderRequest, 1000 / defaultSpeed);
         }
     }
@@ -48,11 +47,16 @@
         scrollingNow = false;
     }
 
+    function start() {
+        scrollingNow = true;
+        scroll();
+    }
+
     function toggle() {
         if (scrollingNow) {
             pause();
         } else {
-            scroll();
+            start();
         }
     }
 

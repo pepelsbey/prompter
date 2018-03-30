@@ -27,6 +27,14 @@
     var maximumSpeed = 60;
     var stepSpeed = 10;
 
+    var KeyCode = {
+      F: 70,
+      H: 72,
+      SPACE: 32,
+      MINUS: 189,
+      EQUALS: 187
+    };
+
     function renderRequest() {
         window.requestAnimationFrame(render);
     }
@@ -83,43 +91,40 @@
 
     document.addEventListener('keydown', function(event) {
         if (event.metaKey || event.ctrlKey) {
-            switch (event.key) {
-                case '-':
+            switch (event.keyCode) {
+                case KeyCode.MINUS:
                     event.preventDefault();
                     resize(-0.1);
                 break;
-                case '=':
+                case KeyCode.EQUALS:
                     event.preventDefault();
                     resize(+0.1);
                 break;
             }
         } else {
-            switch (event.key) {
-                case ' ':
-                case 'ArrowRight':
-                case 'UIKeyInputRightArrow':
+            switch (event.keyCode) {
+                case KeyCode.SPACE:
                     event.preventDefault();
                     toggle();
                 break;
-                case 'ArrowLeft':
-                case 'UIKeyInputLeftArrow':
+                case KeyCode.H:
                     event.preventDefault();
                     pause();
                     rewind();
                 break;
-                case '-':
+                case KeyCode.MINUS:
                     if (defaultSpeed > minimumSpeed) {
                         defaultSpeed -= stepSpeed;
                         console.log(defaultSpeed);
                     }
                 break;
-                case '=':
+                case KeyCode.EQUALS:
                     if (defaultSpeed < maximumSpeed) {
                         defaultSpeed += stepSpeed;
                         console.log(defaultSpeed);
                     }
                 break;
-                case 'f':
+                case KeyCode.F:
                     event.preventDefault();
                     fullscreen(prompt);
                 break;

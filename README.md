@@ -2,7 +2,7 @@
 
 [See it in action](https://pepelsbey.github.io/prompter/)
 
-<img src="images/icon.png" width="128" height="128" alt="">
+![White mirrored text on black background with a grey horizontal bar in the middle.](screen.png)
 
 Node.js and npm are required for prompter to work.
 

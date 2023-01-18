@@ -15,7 +15,7 @@
             "type": "image/svg"
         }
     ],
-    "start_url": "/",
+    "start_url": "/prompter/",
     "theme_color": "#666666",
     "background_color": "#000000"
 }
